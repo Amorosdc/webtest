@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>TicTacToe</title>
+<style>
+body {
+	text-align: center;
+	margin: 50 px;
+}
+
+.button {
+	width: 50px;
+	height: 50px;
+	background-color: "yellow";
+	color: "yellow";
+}
+
+.standard {
+	height: 150px;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: "yellow";
+	color: "yellow";
+}
+
+.container {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(100px, 1fr));
+	grid-gap: 10px;
+	padding: 10 px;
+	width: 450px;
+	text-align: center;
+	margin: auto;
+}
+</style>
+</head>
+
+<body>
+	<h1 style="color: black;">TicTacToe</h1>
+<body style="background-color: gray;">
+	<button class="button" id="reset" onClick="reset(this.id)">Reset</button>
+	<p>Current turn</p>
+	<p id="turn">X</p>
+	<p id="win"></p>
+
+	<div class="container" id="container">
+		<button class="standard" id="1" onClick="clicking(this.id)"></button>
+		<button class="standard" id="2" onClick="clicking(this.id)"></button>
+		<button class="standard" id="3" onClick="clicking(this.id)"></button>
+
+		<button class="standard" id="4" onClick="clicking(this.id)"></button>
+		<button class="standard" id="5" onClick="clicking(this.id)"></button>
+		<button class="standard" id="6" onClick="clicking(this.id)"></button>
+
+		<button class="standard" id="7" onClick="clicking(this.id)"></button>
+		<button class="standard" id="8" onClick="clicking(this.id)"></button>
+		<button class="standard" id="9" onClick="clicking(this.id)"></button>
+	</div>
+
+	<div id="element" style="display: none;">For testing purposes</div>
+
+	<script>
+		function reset(clicked) {
+			document.getElementById("win").innerText = "";
+			document.getElementById("turn").innerText = "X";
+			document.getElementById("1").innerText = "";
+			document.getElementById("2").innerText = "";
+			document.getElementById("3").innerText = "";
+			document.getElementById("4").innerText = "";
+			document.getElementById("5").innerText = "";
+			document.getElementById("6").innerText = "";
+			document.getElementById("7").innerText = "";
+			document.getElementById("8").innerText = "";
+			document.getElementById("9").innerText = "";
+			document.getElementById("1").style.backgroundColor = "white";
+			document.getElementById("2").style.backgroundColor = "white";
+			document.getElementById("3").style.backgroundColor = "white";
+			document.getElementById("4").style.backgroundColor = "white";
+			document.getElementById("5").style.backgroundColor = "white";
+			document.getElementById("6").style.backgroundColor = "white";
+			document.getElementById("7").style.backgroundColor = "white";
+			document.getElementById("8").style.backgroundColor = "white";
+			document.getElementById("9").style.backgroundColor = "white";
+		}
+		function clicking(clicked) {
+			if (document.getElementById("win").innerText != "") {
+				return;
+			}
+			let button1 = document.getElementById(clicked);
+			let test = document.getElementById("turn").innerHTML;
+			if (button1.innerHTML == "X" || button1.innerHTML == "O") {
+				return;
+			}
+			if (document.getElementById("turn").innerHTML == "X") {
+				button1.innerHTML = "X";
+				button1.style.backgroundColor = "red";
+				wincheck(test);
+
+				document.getElementById("turn").innerHTML = "O";
+			} else {
+
+				button1.innerHTML = "O";
+				button1.style.backgroundColor = "blue";
+				wincheck(test);
+
+				document.getElementById("turn").innerHTML = "X";
+			}
+
+		}
+		function wincheck(winner) {
+			if (document.getElementById("1").innerText != ""
+					&& document.getElementById("2").innerText == document
+							.getElementById("1").innerText
+					&& document.getElementById("3").innerText == document
+							.getElementById("1").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("4").innerText != ""
+					&& document.getElementById("5").innerText == document
+							.getElementById("4").innerText
+					&& document.getElementById("6").innerText == document
+							.getElementById("4").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("7").innerText != ""
+					&& document.getElementById("9").innerText == document
+							.getElementById("7").innerText
+					&& document.getElementById("8").innerText == document
+							.getElementById("7").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("1").innerText != ""
+					&& document.getElementById("4").innerText == document
+							.getElementById("1").innerText
+					&& document.getElementById("7").innerText == document
+							.getElementById("1").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("2").innerText != ""
+					&& document.getElementById("5").innerText == document
+							.getElementById("2").innerText
+					&& document.getElementById("8").innerText == document
+							.getElementById("2").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("3").innerText != ""
+					&& document.getElementById("3").innerText == document
+							.getElementById("6").innerText
+					&& document.getElementById("3").innerText == document
+							.getElementById("9").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("1").innerText != ""
+					&& document.getElementById("5").innerText == document
+							.getElementById("1").innerText
+					&& document.getElementById("9").innerText == document
+							.getElementById("1").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+			if (document.getElementById("3").innerText != ""
+					&& document.getElementById("5").innerText == document
+							.getElementById("3").innerText
+					&& document.getElementById("7").innerText == document
+							.getElementById("3").innerText) {
+				document.getElementById("win").innerHTML = "The winner is "
+						+ winner;
+			}
+		}
+	</script>
+
+</body>
+</html>
